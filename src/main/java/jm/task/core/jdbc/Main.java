@@ -3,24 +3,21 @@ package jm.task.core.jdbc;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
 
-import java.sql.SQLException;
-
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         // реализуйте алгоритм здесь
-
-        String name = "Hello";
-        String lastName = "World";
-        byte age = 15;
-
         UserService userService = new UserServiceImpl();
+
         userService.createUsersTable();
-        userService.saveUser(name, lastName, age);
 
-        System.out.println("User с именем - " + name + " добавлен в базу данных");
+        userService.saveUser("Misha","Petrov", (byte) 10);
+        userService.saveUser("Petya", "Leonov", (byte) 12);
+        userService.saveUser("Dima","Ivanov", (byte) 14);
+        userService.saveUser("Lesha","Sidorov", (byte) 16);
 
-        System.out.println(userService.getAllUsers());
+        userService.getAllUsers();
         userService.cleanUsersTable();
         userService.dropUsersTable();
     }
 }
+
